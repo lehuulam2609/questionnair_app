@@ -55,7 +55,12 @@ class DetailQuestionnairWidget extends StatelessWidget {
                     return SizedBox(
                       height: 40,
                       child: Text(
-                        filter[index].title ?? '',
+                        (filter[index].title ?? '').toLowerCase() == 'other'
+                            ? ((filter[index].title ?? '') +
+                                ((filter[index].other ?? '').isNotEmpty
+                                    ? ' - ${(filter[index].other ?? '')}'
+                                    : ''))
+                            : (filter[index].title ?? ''),
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 15,
